@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import { TaskItemProps } from './types';
 import { StyledTaskItem, StyledTaskChanges, StyledToggle } from './styled';
+import Icon from '../Icon';
 
 const TaskItem: FC<TaskItemProps> = ({ title, id, ...rest }) => {
   return (
@@ -15,10 +16,10 @@ const TaskItem: FC<TaskItemProps> = ({ title, id, ...rest }) => {
       </div>
       <StyledTaskChanges>
         <button>
-          edit
+          <Icon>edit</Icon>
         </button>
         <button>
-          delete
+          <Icon>trash</Icon>
         </button>
       </StyledTaskChanges>
     </StyledTaskItem>
