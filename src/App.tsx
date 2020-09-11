@@ -24,6 +24,7 @@ const StyledAppLayout = styled.div`
 const App: FC = () => {
   return (
     <StyledAppLayout>
+      <h1>THINGS TO DO</h1>
       <TaskInput />
       <TasksList />
     </StyledAppLayout>

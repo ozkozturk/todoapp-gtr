@@ -5,7 +5,10 @@ import StyledTaskInput from './styled';
 const TaskInput: FC<TaskInputProps> = () => {
   return (
     <StyledTaskInput>
-      <h2>Task Input</h2>
+      <form action="">
+        <input type="text" value="enter task" />
+        <button type="submit">add</button>
+      </form>
     </StyledTaskInput>
   );
 };
