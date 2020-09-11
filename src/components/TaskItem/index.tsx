@@ -8,11 +8,12 @@ const TaskItem: FC<TaskItemProps> = ({ title, id, ...rest }) => {
     <StyledTaskItem {...rest}>
       <div className="task-text">
         <StyledToggle htmlFor={`${id}`}>
-          <input type="checkbox" />
+          <input type="checkbox" id={`${id}`} />
           <div>
             <div className="rounded-ball" />
           </div>
         </StyledToggle>
+        {title}
       </div>
       <StyledTaskChanges>
         <button>
