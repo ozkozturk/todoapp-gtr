@@ -7,7 +7,7 @@ const CompletedTasks:FC<CompletedTasksProps> = () => {
   return (
     <StyledCompletedTasks>
       <h1>Completed Tasks</h1>
-      <TaskItem />
+      <TaskItem title="title" id={0} />
     </StyledCompletedTasks>
   );
 };
