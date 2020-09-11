@@ -1,32 +1,27 @@
-export const ADD_TASK_ITEM = 'ADD_TASK_ITEM';
-export const DELETE_TASK_ITEM = 'DELETE_TASK_ITEM';
-export const EDIT_TASK_ITEM = 'EDIT_TASK_ITEM';
-export const COMPLETE_TASK_ITEM = 'COMPLETE_TASK_ITEM';
+import api from './api';
+import { GET_TASKS_PENDING, GET_TASKS_SUCCESS, GET_TASKS_FAILURE, GET_TASKS_FULFILL } from './actionTypes';
 
-export const addTask = (taskItem:any) => {
-  return {
-    type: ADD_TASK_ITEM,
-    payload: taskItem,
+export const getTasks = () => {
+  return (dispatch: any) => {
+    dispatch({
+      type: GET_TASKS_PENDING,
+    });
+    return api.get('/').then((response) => {
+      dispatch({
+        type: GET_TASKS_SUCCESS,
+        payload: response.data,
+      });
+    }).catch((error) => {
+      dispatch({
+        type: GET_TASKS_FAILURE,
+        error,
+      });
+    }).finally(() => {
+      dispatch({
+        type: GET_TASKS_FULFILL,
+      });
+    });
   };
 };
 
-export const deleteTask = (id: any) => {
-  return {
-    type: DELETE_TASK_ITEM,
-    payload: id,
-  };
-};
-
-export const editTask = (taskItem: any) => {
-  return {
-    type: EDIT_TASK_ITEM,
-    payload: taskItem,
-  };
-};
-
-export const completeTask = (taskItem: any) => {
-  return {
-    type: COMPLETE_TASK_ITEM,
-    payload: taskItem,
-  };
-};
+export const updateTask = () => {};

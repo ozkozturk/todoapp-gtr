@@ -1,13 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
 import App from './App';
 import './reset.css';
-import reducers from './redux/store';
-import initialState from './redux/initialState';
-
-const store = createStore(reducers, initialState);
+import store from './redux/store';
 
 ReactDOM.render(
   <React.StrictMode>

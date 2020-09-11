@@ -1,12 +1,25 @@
-const initialState: any = {
-  todos: [
-    {
-      id: 1, title: 'have a nice day', isCompleted: false,
-    },
-    {
-      id: 2, title: 'explanation of app', isCompleted: false,
-    },
-  ],
+type TodoTypes = {
+  id: number,
+  title: string,
+  completed: boolean,
+  createdAt: string,
+  updatedAt: string,
+};
+
+type InitialStateTypes = {
+  todos: {
+    status: string;
+    loading: boolean;
+    data: TodoTypes[];
+  };
+};
+
+const initialState: InitialStateTypes = {
+  todos: {
+    status: '',
+    loading: false,
+    data: [],
+  },
 };
 
 export default initialState;

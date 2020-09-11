@@ -1,21 +1,28 @@
-import {
-  ADD_TASK_ITEM, COMPLETE_TASK_ITEM,
-  DELETE_TASK_ITEM, EDIT_TASK_ITEM,
-} from './actions';
+import { combineReducers } from 'redux';
+import { GET_TASKS_SUCCESS, GET_TASKS_FAILURE, GET_TASKS_PENDING, GET_TASKS_FULFILL } from './actionTypes';
 import initialState from './initialState';
 
-const reducer:any = (state: any = initialState.todos, action:any) => {
+type ActionTypes = {
+  type: string;
+  payload: any;
+  error: any;
+}
+
+const todoReducer = (state = initialState.todos, action: ActionTypes) => {
   switch (action.type) {
-    case ADD_TASK_ITEM:
-      return action.payload;
-    case DELETE_TASK_ITEM:
-      return action.payload;
-    case EDIT_TASK_ITEM:
-      return action.payload;
-    case COMPLETE_TASK_ITEM:
-      return action.payload;
+    case GET_TASKS_PENDING:
+      return { ...state, loading: true };
+    case GET_TASKS_SUCCESS:
+      return { ...state, data: [...action.payload.data.todos], status: 'success' };
+    case GET_TASKS_FAILURE:
+      return { ...state, error: action.error, status: 'success' };
+    case GET_TASKS_FULFILL:
+      return { ...state, loading: false };
+    default:
+      return state;
   }
-  return state;
 };
 
-export default reducer;
+export default combineReducers({
+  todos: todoReducer,
+});
