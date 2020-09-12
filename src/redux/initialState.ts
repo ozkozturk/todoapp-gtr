@@ -1,4 +1,4 @@
-type TodoTypes = {
+export type TodoTypes = {
   id: number,
   title: string,
   completed: boolean,
@@ -6,7 +6,7 @@ type TodoTypes = {
   updatedAt: string,
 };
 
-type InitialStateTypes = {
+export type InitialStateTypes = {
   todos: {
     status: string;
     loading: boolean;

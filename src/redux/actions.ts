@@ -92,12 +92,12 @@ export const updateTask = ({ id, title, completed }: UpdateTypes) => {
     });
   };
 };
-export const deleteTask = (id: number, title: string) => {
+export const deleteTask = (id: number) => {
   return (dispatch: any) => {
     dispatch({
       type: DELETE_TASKS_PENDING,
     });
-    return api.post('/delete', { id, title }).then((response) => {
+    return api.post('/delete', { id }).then((response) => {
       dispatch({
         type: DELETE_TASKS_SUCCESS,
         payload: response.data,

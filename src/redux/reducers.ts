@@ -41,7 +41,7 @@ const todoReducer = (state = initialState.todos, action: ActionTypes) => {
     case ADD_TASKS_FAILURE:
     case DELETE_TASKS_FAILURE:
     case UPDATE_TASKS_FAILURE:
-      return { ...state, error: action.error, status: 'success' };
+      return { ...state, status: 'failure' };
     case GET_TASKS_FULFILL:
     case ADD_TASKS_FULFILL:
     case DELETE_TASKS_FULFILL:
