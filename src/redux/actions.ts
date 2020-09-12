@@ -47,7 +47,7 @@ export const getTasks = () => {
   };
 };
 
-export const addTask = (title:string) => {
+export const addTask = (title: string) => {
   return (dispatch: any) => {
     dispatch({
       type: ADD_TASKS_PENDING,
@@ -75,7 +75,7 @@ export const updateTask = ({ id, title, completed }: UpdateTypes) => {
     dispatch({
       type: UPDATE_TASKS_PENDING,
     });
-    return api.post('/create', { id, title, completed }).then((response) => {
+    return api.post('/update', { id, title, completed }).then((response) => {
       dispatch({
         type: UPDATE_TASKS_SUCCESS,
         payload: response.data,
@@ -97,7 +97,7 @@ export const deleteTask = (id: number, title: string) => {
     dispatch({
       type: DELETE_TASKS_PENDING,
     });
-    return api.post('/create', { id, title }).then((response) => {
+    return api.post('/delete', { id, title }).then((response) => {
       dispatch({
         type: DELETE_TASKS_SUCCESS,
         payload: response.data,
