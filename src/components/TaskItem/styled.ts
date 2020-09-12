@@ -13,18 +13,20 @@ export const StyledTaskItem = styled.div`
   color: white;
   border: 1px solid whitesmoke;
   
+  button {
+    outline: none;
+  }
+  
   .task-text {
     display: flex;
     flex-wrap: nowrap;
-    
-    input {
-    margin-top: 5px;
-    margin-right: 5px;
-    }
   }
 `;
 
 export const StyledToggle = styled.label`
+  display: flex;
+  align-items: center;
+  
   input {
     width: 0;
     height: 0;
@@ -75,5 +77,19 @@ export const StyledTaskChanges = styled.div`
     &:hover {
       cursor: pointer;
     }
+  }
+`;
+
+export const StyledEditInput = styled.div`
+
+  input {
+    margin: 0;
+    padding: 5px;
+    outline: none;
+    width: 100%;
+    height: 30px;
+    font-size: 0.8em;
+    border: none;
+    border-radius: 5px;
   }
 `;
