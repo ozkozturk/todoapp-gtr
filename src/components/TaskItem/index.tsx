@@ -1,9 +1,15 @@
 import React, { FC } from 'react';
+import { useDispatch } from 'react-redux';
 import { TaskItemProps } from './types';
 import { StyledTaskItem, StyledTaskChanges, StyledToggle } from './styled';
 import Icon from '../Icon';
+import {
+  deleteTask,
+} from '../../redux/actions';
 
-const TaskItem: FC<TaskItemProps> = ({ title, id, ...rest }) => {
+const TaskItem: FC<TaskItemProps> = ({ title, id, completed, ...rest }) => {
+  const dispatch = useDispatch();
+
   return (
     <StyledTaskItem {...rest}>
       <div className="task-text">
@@ -19,7 +25,9 @@ const TaskItem: FC<TaskItemProps> = ({ title, id, ...rest }) => {
         <button>
           <Icon>edit</Icon>
         </button>
-        <button>
+        <button
+          onClick={() => dispatch(deleteTask(id, title))}
+        >
           <Icon>trash</Icon>
         </button>
       </StyledTaskChanges>
