@@ -50,6 +50,7 @@ const TaskItem: FC<TaskItemProps> = ({ title, id, completed, ...rest }) => {
       </div>
       <StyledTaskChanges>
         <button
+          className="edit-button"
           onClick={handleEdit}
         >
           <Icon>edit</Icon>
