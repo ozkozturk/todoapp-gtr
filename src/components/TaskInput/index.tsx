@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { TaskInputProps } from './types';
 import StyledTaskInput from './styled';
 import { addTask } from '../../redux/actions';
+import Icon from '../Icon';
 
 const TaskInput: FC<TaskInputProps> = ({ ...rest }) => {
   const [task, setTask] = useState('');
@@ -19,7 +20,8 @@ const TaskInput: FC<TaskInputProps> = ({ ...rest }) => {
           type="submit"
           onClick={() => task.length > 0 && dispatch(addTask(task))}
         >
-          add
+          <Icon>plus</Icon>
+          Add
         </button>
       </form>
     </StyledTaskInput>
