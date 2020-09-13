@@ -1,14 +1,14 @@
 import React, { FC, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { TasksListProps } from './types';
 import StyledTasksList from './styled';
 import TaskItem from '../TaskItem';
+import Loader from '../Loader';
 import CompletedTasks from '../CompletedTasks';
 import { getTasks } from '../../redux/actions';
 import { InitialStateTypes } from '../../redux/initialState';
 import { StyledEmptyCompleted } from '../CompletedTasks/styled';
 
-const TasksList: FC<TasksListProps> = () => {
+const TasksList: FC = () => {
   const todos = useSelector((state: InitialStateTypes) => state.todos);
   const haveTask = todos.data.filter((todo) => !todo.completed).map((todo) => (
     <TaskItem title={todo.title} key={todo.id} id={todo.id} completed={todo.completed} />
@@ -18,6 +18,10 @@ const TasksList: FC<TasksListProps> = () => {
   useEffect(() => {
     dispatch(getTasks());
   }, [dispatch]);
+
+  if (todos.loading) {
+    return <Loader />;
+  }
 
   return (
     <StyledTasksList>

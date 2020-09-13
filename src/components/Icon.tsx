@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { FC } from 'react';
 import 'tabler-icons/iconfont/tabler-icons.min.css';
 
-const Icon = (props:any) => {
-  const classList = `ti ti-${props.children}`;
+const Icon: FC = ({ children }) => {
+  const classList = `ti ti-${children}`;
   return (
     <i className={classList} />
   );
