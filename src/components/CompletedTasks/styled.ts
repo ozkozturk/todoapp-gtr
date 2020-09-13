@@ -5,11 +5,22 @@ const StyledCompletedTasks = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
+  margin-top: 30px;
   
   h1 {
     margin: 50px auto;
     width: 100%;
   }
+  
+  .edit-button {
+    display: none;
+  }
+`;
+
+export const StyledEmptyCompleted = styled.div`
+  font-size: 1.4em;
+  color: white;
+  margin: 10px 0;
 `;
 
 export default StyledCompletedTasks;
