@@ -4,7 +4,7 @@ const StyledTaskInput = styled.div`
   width: 90%;
   form {
     height: 50px;
-    margin: 20px 0 50px 0;
+    margin: 20px 5px 50px 5px;
     display: flex;
     
     input, button {
@@ -17,21 +17,45 @@ const StyledTaskInput = styled.div`
     input {
       width: 80%;
       border-bottom: 1px solid red;
-      font-size: 1.2em;
-      font-family: monospace;
+      font-size: 1.5em;
+      font-family: 'Roboto', sans-serif;
       padding-left: 10px;
     }
     
     button {
-      width: 50px;
       height: 50px;
-      font-size: 1.2em;
+      font-size: 20px;
+      line-height: 20px;
       color: white;
       background: transparent;
       cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       
       &:hover {
         background-color: red;
+      }
+    }
+  }
+  @media (max-width: 576px) { 
+    width: 100%;
+    form {
+      margin: 20px 0 50px 0;
+      input {
+        width: 100%;
+        font-size: 1.2em;
+      }
+    }
+   }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    form {
+      margin: 20px 0 50px 0;
+      input {
+        width: 100%;
+        font-size: 1.2em;
       }
     }
   }

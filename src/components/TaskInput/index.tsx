@@ -1,11 +1,10 @@
 import React, { FC, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { TaskInputProps } from './types';
 import StyledTaskInput from './styled';
 import { addTask } from '../../redux/actions';
 import Icon from '../Icon';
 
-const TaskInput: FC<TaskInputProps> = ({ ...rest }) => {
+const TaskInput: FC = ({ ...rest }) => {
   const [task, setTask] = useState('');
   const dispatch = useDispatch();
   const handleSubmit = (e:any) => {
