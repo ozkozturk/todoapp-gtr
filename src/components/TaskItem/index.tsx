@@ -3,9 +3,7 @@ import { useDispatch } from 'react-redux';
 import { TaskItemProps } from './types';
 import { StyledTaskItem, StyledTaskChanges, StyledToggle, StyledEditInput } from './styled';
 import Icon from '../Icon';
-import {
-  deleteTask, updateTask,
-} from '../../redux/actions';
+import { deleteTask, updateTask } from '../../redux/actions';
 
 const TaskItem: FC<TaskItemProps> = ({ title, id, completed, ...rest }) => {
   const [editable, setEditable] = useState(false);
@@ -18,7 +16,9 @@ const TaskItem: FC<TaskItemProps> = ({ title, id, completed, ...rest }) => {
 
   const handleEdit = () => {
     setEditable(!editable);
-    dispatch(updateTask({ id, title: onEdit, completed }));
+    if (onEdit !== title) {
+      dispatch(updateTask({ id, title: onEdit, completed }));
+    }
   };
 
   return (
@@ -34,28 +34,31 @@ const TaskItem: FC<TaskItemProps> = ({ title, id, completed, ...rest }) => {
         </StyledToggle>
         {
           completed ? <del>{title}</del>
-            : editable ?
-              (
+            : editable
+              ? (
                 <StyledEditInput>
                   <input
                     autoFocus
                     type="text"
-                    onKeyUp={e => e.keyCode === 13 && handleEdit()} value={onEdit}
-                    onChange={e => setOnEdit(e.target.value)}
+                    onKeyUp={(e) => e.keyCode === 13 && handleEdit()}
+                    value={onEdit}
+                    onChange={(e) => setOnEdit(e.target.value)}
                   />
                 </StyledEditInput>
               )
               : <p>{onEdit || title}</p>
         }
       </div>
-      <StyledTaskChanges>
+      <StyledTaskChanges completed={completed}>
         <button
+          type="button"
           className="edit-button"
           onClick={handleEdit}
         >
           <Icon>edit</Icon>
         </button>
         <button
+          type="button"
           onClick={() => dispatch(deleteTask(id))}
         >
           <Icon>trash</Icon>

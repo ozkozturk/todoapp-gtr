@@ -15,7 +15,7 @@ import {
   UPDATE_TASKS_PENDING,
   UPDATE_TASKS_SUCCESS,
   UPDATE_TASKS_FAILURE,
-  UPDATE_TASKS_FULFILL
+  UPDATE_TASKS_FULFILL,
 } from './actionTypes';
 import initialState from './initialState';
 

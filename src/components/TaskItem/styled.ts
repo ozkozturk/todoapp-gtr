@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 export const StyledTaskItem = styled.div`
   width: 100%;
-  height: 50px;
+  min-height: 10vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -18,14 +18,17 @@ export const StyledTaskItem = styled.div`
   }
   
   .task-text {
+    width: 80%;
     display: flex;
     flex-wrap: nowrap;
+    word-break: break-all;
   }
 `;
 
 export const StyledToggle = styled.label`
   display: flex;
   align-items: center;
+  width: 45px;
   
   input {
     width: 0;
@@ -62,7 +65,10 @@ export const StyledToggle = styled.label`
 `;
 
 export const StyledTaskChanges = styled.div`
-  
+  width: 20%;
+  display: flex;
+  justify-content: ${({ completed }: { completed: boolean }) => (completed ? 'flex-end' : '')};
+  margin-right: 5px;
   button {
     background-color: transparent;
     border: none;
@@ -78,6 +84,17 @@ export const StyledTaskChanges = styled.div`
       cursor: pointer;
     }
   }
+  @media (max-width: 575.98px){ 
+    .ti {
+      font-size: 1em;
+    }
+  }
+
+  @media (min-width: 576px) and (max-width: 767.98px) {
+    .ti {
+     font-size: 1.1em;
+    }
+  }
 `;
 
 export const StyledEditInput = styled.div`
@@ -89,6 +106,8 @@ export const StyledEditInput = styled.div`
     width: 100%;
     height: 30px;
     font-size: 0.8em;
+    font-family: 'Roboto Light', sans-serif;
+    font-style: italic;
     border: none;
     border-radius: 5px;
   }
